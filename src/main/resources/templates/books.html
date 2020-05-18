@@ -4,52 +4,38 @@
 
 <head>
     <title>books page</title>
-    <style>
-        table,
-        th,
-        td {
-            border: 1px solid black;
-            text-align: center;
-            margin: 0;
-            border-spacing: 0;
-        }
-
-        table {
-            margin-top: 2em;
-        }
-
-        td,
-        th {
-            padding: 0.5em
-        }
-    </style>
-    <script>
-        function addToCart(id) {
-            //TODO
-            //change to adding through server!
-            console.log("adding item with id " + id + " to cart");
-            document.cookie = id + "=" + "1";
-            updateShoppingCart();
-        }
-        function updateShoppingCart() {
-            document.getElementById('shopping_cart').innerHTML = document.cookie;
-        }
-        window.onload = updateShoppingCart;
-    </script>
+    <link rel="stylesheet" href="/styles/index.css">
+    <script src="/scripts/books.js"></script>
 </head>
 
 <body>
     <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
     <form th:action="@{/logout}" method="post">
-        <input type="submit" value="Sign Out"/>
+        <input class="button" type="submit" value="Sign Out"/>
     </form>
-
-    <p id="shopping_cart"></p>
-    
+    <button class="button" onclick="deleteCart()">delete cart</button>
+    <p><span>Total sum: </span><span>$</span><span th:text="${cartSum}"></span></p>
+    <table>
+        <caption>Shopping cart:</caption>
+      <tr>
+          <th scope="col">title</th>
+          <th scope="col">author</th>
+          <th scope="col">year</th>
+          <th scope="col">price</th>
+          <th scope="col">quantity</th>
+      </tr>
+      <tr th:each="book : ${cart}">
+          <td th:text="${book.title}"></td>
+          <td th:text="${book.author}"></td>
+          <td th:text="${book.year}"></td>
+          <td><span>$</span><span th:text="${book.price}"></span></td>
+          <td th:text="${book.quantity}"></td>
+      </tr>
+  </table>
 
 
     <table>
-          <caption>Books</caption>
+          <caption>Store:</caption>
         <tr>
             <th scope="col">title</th>
             <th scope="col">author</th>
@@ -60,8 +46,8 @@
             <td th:text="${book.title}"></td>
             <td th:text="${book.author}"></td>
             <td th:text="${book.year}"></td>
-            <td th:text="${book.price}"></td>
-            <td th:id="${book.id}" onclick="addToCart(this.id)">add to cart</td>
+            <td><span>$</span><span th:text="${book.price}"></span></td>
+            <td th:id="${book.id}" class="addToCartButton button" onclick="addToCart(this.id)">add to cart</td>
         </tr>
     </table>
 </body>

@@ -2,8 +2,10 @@ package com.royhadad.bookstore.controllers;
 
 import java.util.List;
 
-import com.royhadad.bookstore.Book;
-import com.royhadad.bookstore.BookRepo;
+import com.royhadad.bookstore.entities.Book;
+import com.royhadad.bookstore.entities.CartBook;
+import com.royhadad.bookstore.repos.BookRepo;
+import com.royhadad.bookstore.repos.CartRepo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -16,6 +18,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class PagesController {
     @Autowired
     private BookRepo bookRepo;
+    @Autowired
+    private CartRepo cartRepo;
 
     private String getRole() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -35,11 +39,14 @@ public class PagesController {
 
         ModelAndView view;
         List<Book> books = this.bookRepo.findAll();
-        System.out.println(books);
+        List<CartBook> cart = this.cartRepo.findAll();
+
         switch (role) {
             case "ROLE_USER":
                 view = new ModelAndView(currentPath.equals("/books") ? "books.html" : "redirect:/books");
                 view.addObject("books", books);
+                view.addObject("cart", cart);
+                view.addObject("cartSum", CartBook.getCartSum(cart));
                 return view;
             case "ROLE_ADMIN":
                 view = new ModelAndView(currentPath.equals("/admin") ? "admin.html" : "redirect:/admin");

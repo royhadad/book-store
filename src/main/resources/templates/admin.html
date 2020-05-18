@@ -4,13 +4,42 @@
 
 <head>
     <title>admin page</title>
+    <link rel="stylesheet" href="/styles/index.css">
+    <script src="/scripts/admin.js"></script>
 </head>
 
 <body>
     <h1>Admin page</h1>
     <form th:action="@{/logout}" method="post">
-        <input type="submit" value="Sign Out" />
+        <input class="button" type="submit" value="Sign Out" />
     </form>
+
+    <form th:action=@{/api/books} method="post">
+        <p><label>title: </label><input type="text" name="title"></input></p>
+        <p><label>author: </label><input type="text" name="author"></input></p>
+        <p><label>year: </label><input type="text" name="year"></input></p>
+        <p><label>price: </label><input type="text" name="price"></input></p>
+        <p><input type="submit" value="add book"></input></p>
+    </form>
+
+    <table>
+        <caption>Books:</caption>
+        <tr>
+            <th scope="col">title</th>
+            <th scope="col">author</th>
+            <th scope="col">year</th>
+            <th scope="col">price</th>
+            <th scope="col" colspan="2">actions</th>
+        </tr>
+        <tr th:each="book : ${books}">
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.author}"></td>
+            <td th:text="${book.year}"></td>
+            <td><span>$</span><span th:text="${book.price}"></span></td>
+            <td th:id="${book.id}" class="addToCartButton button" onclick="updateBook(this.id)">update book</td>
+            <td th:id="${book.id}" class="addToCartButton button" onclick="deleteBook(this.id)">delete book</td>
+        </tr>
+    </table>
 </body>
 
 </html>

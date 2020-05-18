@@ -1,4 +1,7 @@
+### ENV ###
 src/main/resources/application.properties
+
+### general ###
 
 HELP.md
 target/

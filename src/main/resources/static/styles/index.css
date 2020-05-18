@@ -1,0 +1,36 @@
+table,
+th,
+td {
+    border: 1px solid black;
+    text-align: center;
+    margin: 0;
+    border-spacing: 0;
+}
+
+table {
+    margin-top: 2em;
+}
+
+td,
+th {
+    padding: 0.5em
+}
+
+.addToCartButton {
+    background: lightpink;
+    font-weight: 600;
+}
+
+.button {
+    cursor: pointer;
+}
+
+input.button {
+    margin-bottom: 2em;
+}
+
+caption {
+    font-size: 2em;
+    font-weight: 600;
+    margin-bottom: 0.5em;
+}
