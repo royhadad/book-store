@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+    <title>books page</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            text-align: center;
+            margin: 0;
+            border-spacing: 0;
+        }
+
+        table {
+            margin-top: 2em;
+        }
+
+        td,
+        th {
+            padding: 0.5em
+        }
+    </style>
+    <script>
+        function addToCart(id) {
+            //TODO
+            //change to adding through server!
+            console.log("adding item with id " + id + " to cart");
+            document.cookie = id + "=" + "1";
+            updateShoppingCart();
+        }
+        function updateShoppingCart() {
+            document.getElementById('shopping_cart').innerHTML = document.cookie;
+        }
+        window.onload = updateShoppingCart;
+    </script>
+</head>
+
+<body>
+    <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out"/>
+    </form>
+
+    <p id="shopping_cart"></p>
+    
+
+
+    <table>
+          <caption>Books</caption>
+        <tr>
+            <th scope="col">title</th>
+            <th scope="col">author</th>
+            <th scope="col">year</th>
+            <th scope="col">price</th>
+        </tr>
+        <tr th:each="book : ${books}">
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.author}"></td>
+            <td th:text="${book.year}"></td>
+            <td th:text="${book.price}"></td>
+            <td th:id="${book.id}" onclick="addToCart(this.id)">add to cart</td>
+        </tr>
+    </table>
+</body>
+</html>

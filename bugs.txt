@@ -1,0 +1,9 @@
+#1
+add items to shopping cart on server
+and retrieve on client
+
+#2
+add application.properties to .gitignore before commiting
+
+#3
+create admin page
