@@ -1,9 +1,14 @@
-#1
-add items to shopping cart on server
-and retrieve on client
+#4
+add security constraint on admin api
 
-#2
-add application.properties to .gitignore before commiting
+#5
+add validation to book and cartBook entities (not working currently)
 
-#3
-create admin page
+#6
+add edit option to book on admin page
+
+#7
+fix cartBook entity to extend Book if possible
+
+#8
+deploy to aws

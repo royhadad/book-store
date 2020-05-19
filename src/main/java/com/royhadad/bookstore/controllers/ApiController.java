@@ -13,9 +13,7 @@ import com.royhadad.bookstore.repos.CartRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +21,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -46,8 +43,8 @@ public class ApiController {
         return ResponseEntity.ok().body(book);
     }
 
-    @PostMapping(value = "/books", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public Book createBook(@Valid Book book) {
+    @PostMapping(value = "/books")
+    public Book createBook(@Valid @RequestBody Book book) {
         System.out.println("POST @/api/books, book: " + book.toString());
         return bookRepo.save(book);
     }

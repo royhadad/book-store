@@ -5,6 +5,7 @@
 <head>
     <title>admin page</title>
     <link rel="stylesheet" href="/styles/index.css">
+    <script src="/scripts/utils.js"></script>
     <script src="/scripts/admin.js"></script>
 </head>
 
@@ -14,17 +15,20 @@
         <input class="button" type="submit" value="Sign Out" />
     </form>
 
-    <form th:action=@{/api/books} method="post">
-        <p><label>title: </label><input type="text" name="title"></input></p>
-        <p><label>author: </label><input type="text" name="author"></input></p>
-        <p><label>year: </label><input type="text" name="year"></input></p>
-        <p><label>price: </label><input type="text" name="price"></input></p>
+    <h2>Add Book:</h2>
+    <form class="container" onsubmit="return addBook(this)">
+        <p><label>title: </label><input type="text" name="title" required="required"></input></p>
+        <p><label>author: </label><input type="text" name="author" required="required"></input></p>
+        <p><label>year: </label><input type="number" name="year" min="0" class="inputYear" required="required"></input>
+        </p>
+        <p><label>price: </label><input type="text" name="price" required="required"></input></p>
         <p><input type="submit" value="add book"></input></p>
     </form>
 
     <table>
         <caption>Books:</caption>
         <tr>
+            <th scope="col">id</th>
             <th scope="col">title</th>
             <th scope="col">author</th>
             <th scope="col">year</th>
@@ -32,6 +36,7 @@
             <th scope="col" colspan="2">actions</th>
         </tr>
         <tr th:each="book : ${books}">
+            <td th:text="${book.id}"></td>
             <td th:text="${book.title}"></td>
             <td th:text="${book.author}"></td>
             <td th:text="${book.year}"></td>

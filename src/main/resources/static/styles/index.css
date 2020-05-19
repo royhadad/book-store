@@ -34,3 +34,14 @@ caption {
     font-weight: 600;
     margin-bottom: 0.5em;
 }
+
+.container {
+    width: 10em;
+    clear: both;
+}
+
+.container input {
+    margin-top: 0.4em;
+    width: 100%;
+    clear: both;
+}

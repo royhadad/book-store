@@ -6,14 +6,29 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "books")
 public class Book {
     private long id;
+
+    @Valid
+    @NotNull
+    @Column(name = "title")
     private String title;
+
+    @Valid
+    @NotNull
+    @Column(name = "author")
     private String author;
+
+    @Column(name = "year")
     private int year;
+
+    @Column(name = "price")
     private double price;
 
     public Book() {
@@ -37,7 +52,6 @@ public class Book {
         this.id = id;
     }
 
-    @Column(name = "title")
     public String getTitle() {
         return this.title;
     }
@@ -46,7 +60,6 @@ public class Book {
         this.title = title;
     }
 
-    @Column(name = "author")
     public String getAuthor() {
         return this.author;
     }
@@ -55,7 +68,6 @@ public class Book {
         this.author = author;
     }
 
-    @Column(name = "year")
     public int getYear() {
         return this.year;
     }
@@ -64,7 +76,6 @@ public class Book {
         this.year = year;
     }
 
-    @Column(name = "price")
     public double getPrice() {
         return this.price;
     }
