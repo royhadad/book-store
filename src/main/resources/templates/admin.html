@@ -3,7 +3,7 @@
     xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
 <head>
-    <title>admin page</title>
+    <title>Book store - admin</title>
     <link rel="stylesheet" href="/styles/index.css">
     <script src="/scripts/utils.js"></script>
     <script src="/scripts/admin.js"></script>
@@ -22,29 +22,45 @@
         <p><label>year: </label><input type="number" name="year" min="0" class="inputYear" required="required"></input>
         </p>
         <p><label>price: </label><input type="text" name="price" required="required"></input></p>
-        <p><input type="submit" value="add book"></input></p>
+        <p><input type="submit" value="add book" class="button"></input></p>
     </form>
 
-    <table>
-        <caption>Books:</caption>
-        <tr>
-            <th scope="col">id</th>
-            <th scope="col">title</th>
-            <th scope="col">author</th>
-            <th scope="col">year</th>
-            <th scope="col">price</th>
-            <th scope="col" colspan="2">actions</th>
-        </tr>
-        <tr th:each="book : ${books}">
-            <td th:text="${book.id}"></td>
-            <td th:text="${book.title}"></td>
-            <td th:text="${book.author}"></td>
-            <td th:text="${book.year}"></td>
-            <td><span>$</span><span th:text="${book.price}"></span></td>
-            <td th:id="${book.id}" class="addToCartButton button" onclick="updateBook(this.id)">update book</td>
-            <td th:id="${book.id}" class="addToCartButton button" onclick="deleteBook(this.id)">delete book</td>
-        </tr>
-    </table>
+    <form class="container" id="updateBooksForm">
+        <table class="editBookTable">
+            <caption>Books:</caption>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">title</th>
+                <th scope="col">author</th>
+                <th scope="col">year</th>
+                <th scope="col">price</th>
+                <th scope="col" colspan="2">actions</th>
+            </tr>
+            <tr th:each="book : ${books}" th:id="row+${book.id}">
+                <td th:text="${book.id}"></td>
+                <td class="editTableTd">
+                    <input class="tableFormField title" type="text" name="title" th:value="${book.title}" />
+                </td>
+                <td class="editTableTd">
+                    <input class="tableFormField author" type="text" name="author" th:value="${book.author}" />
+                </td>
+                <td class="editTableTd">
+                    <input type="number" name="year" class="inputYear tableFormField" th:value="${book.year}" />
+                </td>
+                <td class="editTableTd">
+                    <input class="tableFormField price" type="text" name="price" th:value="${book.price}" />
+                </td>
+                <td class="updateBookButton__wrapper"><input th:id="${book.id}"
+                        class="addToCartButton button updateBookButton" type="submit" value="update book"
+                        onclick="return updateBook(this)" />
+                </td>
+                <td class="updateBookButton__wrapper"><input class="addToCartButton button updateBookButton"
+                        type="button" value="delete book" th:id="${book.id}" onclick="deleteBook(this.id)" />
+                </td>
+            </tr>
+        </table>
+    </form>
+    <div class="bottom-spacer-div"></div>
 </body>
 
 </html>

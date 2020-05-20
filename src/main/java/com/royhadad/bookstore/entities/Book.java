@@ -6,22 +6,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "books")
 public class Book {
     private long id;
 
-    @Valid
-    @NotNull
     @Column(name = "title")
     private String title;
 
-    @Valid
-    @NotNull
     @Column(name = "author")
     private String author;
 

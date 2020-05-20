@@ -3,7 +3,7 @@
     xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
 <head>
-    <title>books page</title>
+    <title>Book store - user</title>
     <link rel="stylesheet" href="/styles/index.css">
     <script src="/scripts/utils.js"></script>
     <script src="/scripts/books.js"></script>
@@ -51,5 +51,6 @@
             <td th:id="${book.id}" class="addToCartButton button" onclick="addToCart(this.id)">add to cart</td>
         </tr>
     </table>
+    <div class="bottom-spacer-div"></div>
 </body>
 </html>

@@ -1,3 +1,8 @@
+*{
+    font-family: "Times New Roman", Times, serif;
+    box-sizing: border-box;
+}
+
 table,
 th,
 td {
@@ -21,12 +26,26 @@ th {
     font-weight: 600;
 }
 
+.updateBookButton__wrapper{
+    text-align: center;
+    vertical-align: middle;
+    background: lightpink;
+    padding: 0.5em
+}
+.updateBookButton{
+    margin:0 !important;
+    padding: 0;
+    border: none;
+    background: inherit;
+}
+
 .button {
     cursor: pointer;
 }
 
 input.button {
     margin-bottom: 2em;
+    font-size: 16px;
 }
 
 caption {
@@ -44,4 +63,35 @@ caption {
     margin-top: 0.4em;
     width: 100%;
     clear: both;
+}
+
+.editBookTable{
+    table-layout: fixed;
+}
+
+.editTableTd{
+    width: 100px;
+
+}
+
+.tableFormField{
+    display:inline-block;
+
+    margin: 0 !important;
+}
+.tableFormField.title{
+    width: 20rem;
+}
+.tableFormField.author{
+    width: 10rem;
+}
+.tableFormField.inputYear{
+    width: 3rem;
+}
+.tableFormField.price{
+    width: 4rem;
+}
+
+.bottom-spacer-div {
+    margin-bottom: 20rem;
 }

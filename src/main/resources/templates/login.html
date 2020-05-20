@@ -3,7 +3,8 @@
     xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
 <head>
-    <title>Spring Security Example </title>
+    <title>Book store - login</title>
+    <link rel="stylesheet" href="/styles/index.css">
 </head>
 
 <body>
@@ -16,8 +17,9 @@
     <form th:action="@{/login}" method="post">
         <div><label> User Name : <input type="text" name="username" /> </label></div>
         <div><label> Password: <input type="password" name="password" /> </label></div>
-        <div><input type="submit" value="Sign In" /></div>
+        <div><input class="button" type="submit" value="Sign In" /></div>
     </form>
+    <div class="bottom-spacer-div"></div>
 </body>
 
 </html>

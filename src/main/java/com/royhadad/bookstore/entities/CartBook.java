@@ -14,11 +14,23 @@ import javax.persistence.Table;
 @Table(name = "cart")
 public class CartBook {
     private long id;
+
+    @Column(name = "bookId")
     private long bookId;
+
+    @Column(name = "title")
     private String title;
+
+    @Column(name = "author")
     private String author;
+
+    @Column(name = "year")
     private int year;
+
+    @Column(name = "price")
     private double price;
+
+    @Column(name = "quantity")
     private int quantity;
 
     public CartBook() {
@@ -52,7 +64,6 @@ public class CartBook {
         this.bookId = bookId;
     }
 
-    @Column(name = "title")
     public String getTitle() {
         return this.title;
     }
@@ -61,7 +72,6 @@ public class CartBook {
         this.title = title;
     }
 
-    @Column(name = "author")
     public String getAuthor() {
         return this.author;
     }
@@ -70,7 +80,6 @@ public class CartBook {
         this.author = author;
     }
 
-    @Column(name = "year")
     public int getYear() {
         return this.year;
     }
@@ -79,7 +88,6 @@ public class CartBook {
         this.year = year;
     }
 
-    @Column(name = "price")
     public double getPrice() {
         return this.price;
     }
@@ -88,7 +96,6 @@ public class CartBook {
         this.price = price;
     }
 
-    @Column(name = "quantity")
     public int getQuantity() {
         return this.quantity;
     }

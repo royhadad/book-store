@@ -17,8 +17,7 @@ function addToCart(id) {
             location.reload();
         })
         .catch(function (err) {
-            alert('Something went wrong. status: ' + err.message);
-            disableOrEnableAllButtons(true);
+            alertMessageAndEnableButtons('Something went wrong. status: ' + err.message);
         });
 }
 function deleteCart() {
@@ -39,7 +38,6 @@ function deleteCart() {
             location.reload();
         })
         .catch(function (err) {
-            alert('Something went wrong. status: ' + err.message);
-            disableOrEnableAllButtons(true);
+            alertMessageAndEnableButtons('Something went wrong. status: ' + err.message);
         });
 }
