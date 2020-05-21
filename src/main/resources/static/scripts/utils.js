@@ -12,3 +12,5 @@ function alertMessageAndEnableButtons(msg) {
     disableOrEnableAllButtons(true);
     alert(msg);
 }
+
+const proxyURL = `http://${window.location.hostname}:${window.location.port}`;
