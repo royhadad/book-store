@@ -2,7 +2,7 @@ function addToCart(id) {
     disableOrEnableAllButtons(false);
     console.log("adding item with id " + id + " to cart...");
 
-    fetch(proxyURL + '/api/shopping-cart', {
+    fetch('/api/shopping-cart', {
         headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
@@ -24,7 +24,7 @@ function deleteCart() {
     disableOrEnableAllButtons(false);
     console.log("deleting cart...");
 
-    fetch(proxyURL + '/api/shopping-cart', {
+    fetch('/api/shopping-cart', {
         headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json'

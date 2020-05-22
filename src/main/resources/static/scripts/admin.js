@@ -19,7 +19,7 @@ function updateBook(submitButton) {
         console.log('updating book with id ' + id + "...");
         console.log(book);
 
-        fetch(proxyURL + '/api/books/' + id, {
+        fetch('/api/books/' + id, {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
@@ -43,7 +43,7 @@ function deleteBook(id) {
     disableOrEnableAllButtons(false);
     console.log('deleting book with id ' + id + '...');
 
-    fetch(proxyURL + '/api/books/' + id, {
+    fetch('/api/books/' + id, {
         headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
@@ -69,7 +69,7 @@ function addBook(formElement) {
     const book = getBookFromFormElement(formElement);
     console.log(book);
 
-    fetch(proxyURL + '/api/books', {
+    fetch('/api/books', {
         headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
